@@ -6,15 +6,6 @@
   "background_color": "#ffffff",
   "theme_color": "#000000",
   "icons": [
-    {
-      "src": "/pythagorean-quiz/icon-192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "/pythagorean-quiz/icon-512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
+
   ]
 }
