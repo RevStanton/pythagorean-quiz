@@ -2,6 +2,7 @@
   "name": "codespaces-react",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@firebase/firestore": "^4.7.5",
     "@testing-library/jest-dom": "^5.16.5",
@@ -25,7 +26,8 @@
     "preview": "vite preview",
     "test": "vitest",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "analyze": "node src/analyzePrinciples.js"
   },
   "homepage": "https://revstanton.github.io/pythagorean-quiz/",
   "eslintConfig": {

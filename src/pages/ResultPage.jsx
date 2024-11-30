@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom"; // For navigation
+import { useLocation, useNavigate } from "react-router-dom";
 import { auth, db } from "../firebase";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import results from "../data/results";
@@ -9,14 +9,15 @@ function ResultPage() {
   const location = useLocation();
   const navigate = useNavigate();
   const [savedResult, setSavedResult] = useState(null);
-  const [isSaving, setIsSaving] = useState(false); // Tracks save status
-  const [feedback, setFeedback] = useState(""); // Feedback message
-  const { dominantPrinciple } = location.state || {}; // Passed from QuizPage
-  const result = results[dominantPrinciple];
+  const [isSaving, setIsSaving] = useState(false);
+  const [feedback, setFeedback] = useState("");
+  const { dominantPrinciple, secondaryPrinciple } = location.state || {}; // Added secondary principle
+  const primaryResult = results[dominantPrinciple];
+  const secondaryResult = results[secondaryPrinciple];
 
-  // Fetch saved results if the user is authenticated
+  // Fetch saved results from Firestore
   useEffect(() => {
-    const fetchResults = async () => {
+    const fetchSavedResults = async () => {
       if (auth.currentUser) {
         try {
           const userRef = doc(db, "users", auth.currentUser.uid);
@@ -30,22 +31,26 @@ function ResultPage() {
       }
     };
 
-    fetchResults();
+    fetchSavedResults();
   }, []);
 
-  // Handle saving results
+  // Save results to Firestore
   const handleSaveResults = async () => {
     if (!auth.currentUser) {
-      navigate("/signin"); // Redirect to sign-in if not logged in
+      navigate("/signin"); // Redirect to sign-in page if not logged in
       return;
     }
 
     setIsSaving(true);
     try {
       const userRef = doc(db, "users", auth.currentUser.uid);
-      await setDoc(userRef, { result: dominantPrinciple }, { merge: true });
+      await setDoc(
+        userRef,
+        { result: dominantPrinciple, secondary: secondaryPrinciple },
+        { merge: true }
+      );
       setFeedback("Results saved successfully!");
-      setSavedResult(dominantPrinciple); // Update saved result
+      setSavedResult(dominantPrinciple);
     } catch (error) {
       console.error("Error saving results:", error.message);
       setFeedback("Failed to save results. Please try again.");
@@ -54,18 +59,33 @@ function ResultPage() {
     }
   };
 
-  if (!result && !savedResult) {
+  // Redirect if no result is available
+  if (!primaryResult && !savedResult) {
     return <h2>No result available. Please complete the quiz.</h2>;
   }
 
-  const displayResult = savedResult ? results[savedResult] : result;
+  // Determine what to display
+  const displayPrimaryResult = savedResult ? results[savedResult] : primaryResult;
 
   return (
     <div className="result-page">
-      <h1>{displayResult.title}</h1>
-      <p>{displayResult.description}</p>
-      <h3>Advice from Pythagoras:</h3>
-      <p>{displayResult.advice}</p>
+      {/* Primary Principle Section */}
+      <div className="result-section">
+        <h1>{displayPrimaryResult.title}</h1>
+        <p>{displayPrimaryResult.description}</p>
+        <h3>Advice from Pythagoras:</h3>
+        <p>{displayPrimaryResult.advice}</p>
+      </div>
+
+      {/* Secondary Principle Section */}
+      {secondaryResult && (
+        <div className="result-section">
+          <h2>Secondary Principle: {secondaryResult.title}</h2>
+          <p>{secondaryResult.description}</p>
+          <h3>Additional Insights:</h3>
+          <p>{secondaryResult.advice}</p>
+        </div>
+      )}
 
       {/* Save Results Section */}
       <div className="save-results">
@@ -79,11 +99,9 @@ function ResultPage() {
         ) : savedResult ? (
           <p>Your results are already saved!</p>
         ) : (
-          <p>
-            <button onClick={() => navigate("/signin")}>
-              Sign in to save your results
-            </button>
-          </p>
+          <button onClick={() => navigate("/signin")}>
+            Sign in to save your results
+          </button>
         )}
       </div>
     </div>
