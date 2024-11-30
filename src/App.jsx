@@ -9,7 +9,7 @@ import TermsPage from "./pages/TermsPage";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/pythagorean-quiz">
       <Routes>
         <Route path="/" element={<WelcomePage />} />
         <Route path="/signup" element={<SignUpPage />} />
@@ -23,4 +23,3 @@ function App() {
 }
 
 export default App;
-
