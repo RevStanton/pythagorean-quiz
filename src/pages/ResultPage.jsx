@@ -4,6 +4,7 @@ import { auth, db } from "../firebase";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import results from "../data/results";
 import "../styles/ResultPage.css";
+import principleCombinations from "../data/principleCombinations";
 
 function ResultPage() {
   const location = useLocation();
@@ -13,7 +14,6 @@ function ResultPage() {
   const [feedback, setFeedback] = useState("");
   const { dominantPrinciple, secondaryPrinciple } = location.state || {}; // Added secondary principle
   const primaryResult = results[dominantPrinciple];
-  const secondaryResult = results[secondaryPrinciple];
 
   // Fetch saved results from Firestore
   useEffect(() => {
@@ -67,6 +67,10 @@ function ResultPage() {
   // Determine what to display
   const displayPrimaryResult = savedResult ? results[savedResult] : primaryResult;
 
+  // Fetch the combination result description
+  const combinationDescription =
+    principleCombinations[dominantPrinciple]?.[secondaryPrinciple] || "";
+
   return (
     <div className="result-page">
       {/* Primary Principle Section */}
@@ -78,12 +82,10 @@ function ResultPage() {
       </div>
 
       {/* Secondary Principle Section */}
-      {secondaryResult && (
+      {secondaryPrinciple && combinationDescription && (
         <div className="result-section">
-          <h2>Secondary Principle: {secondaryResult.title}</h2>
-          <p>{secondaryResult.description}</p>
-          <h3>Additional Insights:</h3>
-          <p>{secondaryResult.advice}</p>
+          <h2>Secondary Principle: {secondaryPrinciple}</h2>
+          <p>{combinationDescription}</p>
         </div>
       )}
 

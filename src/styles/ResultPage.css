@@ -1,32 +1,61 @@
-/* ResultPage.css */
-
 .result-page {
-    max-width: 700px;
-    margin: auto;
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    text-align: center;
-  }
-  
-  .result-page h1 {
-    font-size: 28px;
-    margin-bottom: 20px;
-    background: linear-gradient(90deg, #6c5ce7, #81ecec);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-  .result-page p {
-    font-size: 18px;
-    margin: 15px 0;
-  }
-  
-  .result-page h3 {
-    font-size: 22px;
-    margin-top: 20px;
-    color: #6c5ce7;
-  }
-  
-  
+  max-width: 700px;
+  margin: auto;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* Styling for the primary principle title */
+.result-page h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #6c5ce7, #81ecec);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Styling for the secondary principle combination result */
+.result-page h2 {
+  font-size: 28px;
+  margin-top: 25px;
+  color: #00cec9;
+}
+
+/* General text styling */
+.result-page p {
+  font-size: 18px;
+  margin: 15px 0;
+  line-height: 1.5;
+}
+
+/* Advice section */
+.result-page h3 {
+  font-size: 22px;
+  margin-top: 20px;
+  color: #6c5ce7;
+}
+
+/* Additional styling for buttons or feedback messages */
+.save-results button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background: #6c5ce7;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.save-results button:hover {
+  background: #81ecec;
+}
+
+.save-results .feedback {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #636e72;
+}
