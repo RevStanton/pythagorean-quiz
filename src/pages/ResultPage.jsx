@@ -6,6 +6,8 @@ import results from "../data/results";
 import "../styles/ResultPage.css";
 import principleCombinations from "../data/principleCombinations";
 
+
+
 function ResultPage() {
   const location = useLocation();
   const navigate = useNavigate();
