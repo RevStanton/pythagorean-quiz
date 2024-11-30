@@ -39,6 +39,12 @@ function WelcomePage() {
         </button>
         <button
           className="sign-in-button"
+          onClick={() => navigate("/signup")}
+        >
+          Sign Up to Save Results
+        </button>
+        <button
+          className="sign-in-button"
           onClick={() => navigate("/signin")}
         >
           Sign In to View Results

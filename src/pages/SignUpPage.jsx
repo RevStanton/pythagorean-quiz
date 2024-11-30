@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { auth, db } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
+import { Link } from "react-router-dom";
 import "../styles/SignUpPage.css";
 
 function SignUpPage() {
@@ -54,64 +55,62 @@ function SignUpPage() {
   };
 
   return (
-    <div className="signup-page">
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="firstName"
-          placeholder="First Name"
-          value={formData.firstName}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="lastName"
-          placeholder="Last Name"
-          value={formData.lastName}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="date"
-          name="dob"
-          placeholder="Date of Birth"
-          value={formData.dob}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
-        <div>
-          <input
-            type="checkbox"
-            name="agreeToTerms"
-            checked={formData.agreeToTerms}
-            onChange={handleChange}
-          />
-          <label>
-            I agree to the <a href="/terms">terms and privacy policy</a>.
-          </label>
-        </div>
-        {error && <p className="error">{error}</p>}
-        <button type="submit">Sign Up</button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit}>
+  <input
+    type="text"
+    name="firstName"
+    placeholder="First Name"
+    value={formData.firstName}
+    onChange={handleChange}
+    required
+  />
+  <input
+    type="text"
+    name="lastName"
+    placeholder="Last Name"
+    value={formData.lastName}
+    onChange={handleChange}
+    required
+  />
+  <input
+    type="date"
+    name="dob"
+    placeholder="Date of Birth"
+    value={formData.dob}
+    onChange={handleChange}
+    required
+  />
+  <input
+    type="email"
+    name="email"
+    placeholder="Email"
+    value={formData.email}
+    onChange={handleChange}
+    required
+  />
+  <input
+    type="password"
+    name="password"
+    placeholder="Password"
+    value={formData.password}
+    onChange={handleChange}
+    required
+  />
+  <div className="checkbox-container">
+    <input
+      type="checkbox"
+      name="agreeToTerms"
+      checked={formData.agreeToTerms}
+      onChange={handleChange}
+    />
+    <label>
+    I agree to the <Link to="/terms">terms and privacy policy</Link>.
+    </label>
+  </div>
+  {error && <p className="error">{error}</p>}
+  <button type="submit">Sign Up</button>
+</form>
+
   );
 }
 
