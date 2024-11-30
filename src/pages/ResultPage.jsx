@@ -85,6 +85,7 @@ function ResultPage() {
       {secondaryPrinciple && combinationDescription && (
         <div className="result-section">
           <h2>Secondary Principle: {secondaryPrinciple}</h2>
+          <h3>Words of Encouragement:</h3>
           <p>{combinationDescription}</p>
         </div>
       )}
