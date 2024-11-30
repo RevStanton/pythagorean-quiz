@@ -43,3 +43,44 @@
     border-bottom: 2px solid #ffeaa7; /* Add a bottom border */
   }
   
+  .navigation ul {
+    display: flex;
+    flex-direction: row; /* Items are aligned horizontally */
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    gap: 15px; /* Adds spacing between menu items */
+    justify-content: center; /* Centers the entire menu */
+  }
+
+  .navigation li {
+    margin: 0;
+    display: flex;
+    align-items: center; /* Ensures vertical alignment */
+    justify-content: center; /* Ensures horizontal alignment */
+  }
+
+  .navigation a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+  }
+  
+  .navigation a:hover,
+.navigation a.active-link {
+  background: rgba(255, 255, 255, 0.2); /* Highlights active/hovered link */
+}
+
+@media (max-width: 768px) {
+  .navigation ul {
+    align-items: center; /* Centers items */
+  }
+
+  .navigation a {
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+}

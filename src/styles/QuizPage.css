@@ -1,54 +1,78 @@
 /* QuizPage.css */
 
 .quiz-container {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  h2 {
-    font-size: 22px;
-    margin-bottom: 15px;
-  }
-  
-  p {
-    font-size: 18px;
-    margin: 15px 0;
-  }
-  
-.question-text {
-    font-size: 20px;
-    margin: 20px 0; /* Adds spacing between the question and buttons */
-    line-height: 1.5; /* Improves readability for longer questions */
-    text-align: center; /* Centers the question text */
-    
-button {
-    width: 200px; /* Set a consistent width */
-    text-align: center; /* Center-align text within the button */
-    padding: 10px 20px;
-    margin: 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    background: linear-gradient(90deg, #6c5ce7, #a29bfe);
-    color: white;
-    transition: transform 0.2s ease-in-out, background 0.3s ease-in-out;
-  }
-  
-  button:hover {
-    transform: scale(1.1);
-    background: linear-gradient(90deg, #a29bfe, #6c5ce7);
-  }
-  
-  .button-container {
-    display: flex; /* Use flexbox for alignment */
-    flex-direction: column; /* Stack buttons vertically */
-    align-items: center; /* Center-align buttons horizontally */
-    gap: 10px; /* Add consistent spacing between buttons */
-  }
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex; /* Ensures vertical and horizontal centering */
+  flex-direction: column; /* Aligns items vertically */
+  align-items: center; /* Centers the content horizontally */
+  justify-content: flex-start; /* Keeps content starting from the top */
+  min-height: 100vh; /* Ensures the container takes up the full viewport height */
 }
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #6c5ce7; /* Matches the app's theme */
+  text-align: center; /* Centers the "Question #" heading */
+}
+
+.question-text {
+  font-size: 20px;
+  margin: 10px 0 30px; /* Adds spacing between the question and buttons */
+  line-height: 1.5; /* Improves readability for longer questions */
+  text-align: center; /* Centers the question text under Question# */
+  color: #6c5ce7; /* Matches the app's theme */
+  width: 100%; /* Ensures the question spans the full width of the container */
+}
+
+.button-container {
+  display: flex; /* Use flexbox for alignment */
+  flex-wrap: wrap; /* Makes buttons responsive to smaller screens */
+  justify-content: center; /* Centers buttons horizontally */
+  gap: 15px; /* Adds consistent spacing between buttons */
+  width: 100%; /* Ensures buttons are contained properly */
+}
+
+button {
+  width: 200px; /* Set a consistent width */
+  text-align: center; /* Center-align text within the button */
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  background: linear-gradient(90deg, #6c5ce7, #a29bfe);
+  color: white;
+  transition: transform 0.2s ease-in-out, background 0.3s ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.1); /* Slightly enlarges the button on hover */
+  background: linear-gradient(90deg, #a29bfe, #6c5ce7);
+}
+
+@media (max-width: 768px) {
+  .quiz-container {
+      padding: 15px; /* Adjusts padding for smaller screens */
+      min-height: auto; /* Allows content to expand naturally on smaller devices */
+  }
+
+  button {
+      width: 100%; /* Ensures buttons are full-width on small screens */
+      font-size: 14px; /* Slightly reduces font size for better readability */
+  }
+
+  .question-text {
+      font-size: 18px; /* Adjust font size for smaller screens */
+      margin: 10px 0 20px; /* Reduce spacing for smaller layouts */
+  }
+
+}
+
