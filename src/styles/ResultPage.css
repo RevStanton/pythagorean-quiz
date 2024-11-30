@@ -10,9 +10,10 @@
 
 /* Styling for the primary principle title */
 .result-page h1 {
-  font-size: 32px;
+  font-size: 28px;
   margin-bottom: 20px;
   background: linear-gradient(90deg, #6c5ce7, #81ecec);
+  background-clip: text; /* Add the standard property */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
