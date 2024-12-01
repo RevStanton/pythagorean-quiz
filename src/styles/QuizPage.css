@@ -35,18 +35,19 @@ h2 {
   display: flex; /* Use flexbox for alignment */
   flex-wrap: wrap; /* Makes buttons responsive to smaller screens */
   justify-content: center; /* Centers buttons horizontally */
-  gap: 15px; /* Adds consistent spacing between buttons */
+  gap: 5px; /* Adds consistent spacing between buttons */
   width: 100%; /* Ensures buttons are contained properly */
 }
 
-button {
-  width: 200px; /* Set a consistent width */
-  text-align: center; /* Center-align text within the button */
+.button {
+  flex: 1 1 auto; /* Allow buttons to grow and shrink based on container size */
+  max-width: 150px; /* Set a maximum width for the buttons */
+  text-align: center; /* Center-align text inside the button */
   padding: 10px 20px;
-  margin: 10px;
+  margin: 5px; /* Add spacing between buttons */
   border: none;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 12px;
   cursor: pointer;
   background: linear-gradient(90deg, #6c5ce7, #a29bfe);
   color: white;

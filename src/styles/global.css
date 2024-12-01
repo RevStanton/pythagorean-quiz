@@ -1,59 +1,167 @@
-/* global.css */
-
+/* Global Reset and Body Styling */
 body {
-    font-family: 'Poppins', sans-serif;
-    overflow-y: auto; /* Ensures vertical scrolling */
-    overflow-x: hidden; /* Prevents horizontal scrolling */
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #f0ece2, #a29bfe);
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  h1, h2, h3 {
-    font-family: 'Cinzel', serif;
-    text-align: center;
-    color: #333333;
-  }
-  
-  button {
-    padding: 10px 20px;
-    margin: 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    background: linear-gradient(90deg, #6c5ce7, #a29bfe);
-    color: white;
-    transition: transform 0.2s ease-in-out, background 0.3s ease-in-out;
-  }
-  
-  button:hover {
-    transform: scale(1.1);
-    background: linear-gradient(90deg, #a29bfe, #6c5ce7);
-  }
-  
-  input {
-    padding: 10px;
-    margin: 10px 0;
-    width: 100%;
-    font-size: 16px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  
-  input:focus {
-    border-color: #6c5ce7;
-    outline: none;
-  }
-  
-  .error {
-    color: red;
-    text-align: center;
-  }
-  
+  font-family: 'Poppins', sans-serif;
+  overflow-y: auto; /* Ensures vertical scrolling */
+  overflow-x: hidden; /* Prevents horizontal scrolling */
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f0ece2, #a29bfe);
+  color: #333;
+  display: flex;
+  flex-direction: column; /* Allows pages to stack content */
+  align-items: center; /* Centers content horizontally */
+  min-height: 100vh; /* Ensures content stretches to full height */
+  box-sizing: border-box; /* Includes padding in width/height calculations */
+}
+
+/* Global Header Styling */
+h1, h2, h3 {
+  font-family: 'Cinzel', serif;
+  text-align: center;
+  color: #333333;
+  margin: 15px 0; /* Adds consistent spacing between headings */
+}
+
+/* Buttons */
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  background: linear-gradient(90deg, #6c5ce7, #a29bfe);
+  color: white;
+  transition: transform 0.2s ease-in-out, background 0.3s ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.1);
+  background: linear-gradient(90deg, #a29bfe, #6c5ce7);
+}
+
+/* Inputs (Shared for Forms) */
+input {
+  padding: 10px;
+  margin: 10px 0;
+  width: 100%;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+input:focus {
+  border-color: #6c5ce7;
+  outline: none;
+}
+
+/* Containers for Page Layout */
+.container {
+  max-width: 900px; /* Adjusts for wide content */
+  margin: 20px auto; /* Centers content horizontally */
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.header-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* General Typography */
+p {
+  font-size: 18px;
+  margin: 15px 0;
+  line-height: 1.6; /* Improves readability */
+  color: #333;
+}
+
+/* Navigation Bar */
+.navigation {
+  width: 100%;
+  background: linear-gradient(90deg, #6c5ce7, #81ecec);
+  padding: 10px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navigation ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.navigation a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.navigation a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Error Messaging */
+.error {
+  color: red;
+  text-align: center;
+}
+
+/* Page-Specific Adjustments */
+
+/* QuizPage Shared Styles */
+.quiz-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.quiz-container .question-text {
+  font-size: 20px;
+  margin: 15px 0;
+  text-align: center;
+  color: #333333;
+}
+
+/* Principles Explained */
+.principles-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.principles-card {
+  background: linear-gradient(90deg, #f0ece2, #d1d8e0);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.principles-card h2 {
+  font-size: 22px;
+  color: #6c5ce7;
+}
+
+/* Results */
+.results-container {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+}

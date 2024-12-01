@@ -1,34 +1,57 @@
-.signup-page form input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+/* Signup Form Styling */
+.signup-container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
 }
 
-.signup-page .checkbox-container {
+.signup-container h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #6c5ce7;
+}
+
+.signup-container form {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 15px;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.signup-page .checkbox-container label {
-  font-size: 14px;
-}
-
-.signup-page button {
-  width: 100%;
+.signup-container input {
   padding: 10px;
-  background-color: #6c63ff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
 }
 
-.signup-page button:hover {
-  background-color: #584ed3;
+.signup-container input:focus {
+  border-color: #6c5ce7;
+  outline: none;
+}
+
+.signup-container .terms-container {
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.signup-container button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: linear-gradient(90deg, #6c5ce7, #a29bfe);
+  color: white;
+  transition: background 0.3s ease-in-out;
+}
+
+.signup-container button:hover {
+  background: linear-gradient(90deg, #a29bfe, #6c5ce7);
 }
