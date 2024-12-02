@@ -1,12 +1,14 @@
-/* Signup Form Styling */
+/* SignUpPage.css */
+
 .signup-container {
   max-width: 500px;
-  margin: 20px auto;
+  margin: 100px auto; /* Center the container with spacing from the top */
   padding: 20px;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
+  position: relative; /* To anchor the navigation above */
 }
 
 .signup-container h1 {
@@ -34,6 +36,7 @@
 }
 
 .signup-container .terms-container {
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
@@ -54,4 +57,12 @@
 
 .signup-container button:hover {
   background: linear-gradient(90deg, #a29bfe, #6c5ce7);
+}
+
+/* Center Navigation */
+.nav-bar {
+  position: absolute;
+  top: -50px; /* Adjust to place navigation above the form container */
+  left: 50%;
+  transform: translateX(-50%);
 }

@@ -3,13 +3,14 @@
     justify-content: center; /* Center the navigation items horizontally */
     align-items: center; /* Align items vertically */
     background: linear-gradient(90deg, #6c5ce7, #81ecec); /* Gradient background */
-    padding: 10px 0; /* Add padding for spacing */
-    position: fixed; /* Make it stick to the top */
+    padding: 5px 0; /* Add padding for spacing */
+    position: sticky; /* Make it stick to the top */
     top: 0;
     left: 0; /* Ensure it starts from the very left */
     width: 100%; /* Ensure it spans the full width of the viewport */
     z-index: 1000; /* Ensure it stays above other elements */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    border-radius: 15px;
   }
   
   .nav-list {

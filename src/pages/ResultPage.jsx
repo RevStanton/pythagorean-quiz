@@ -2,11 +2,34 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { auth, db } from "../firebase";
 import { doc, setDoc, getDoc } from "firebase/firestore";
-import results from "../data/results";
 import "../styles/ResultPage.css";
 import principleCombinations from "../data/principleCombinations";
 
+// Import individual principle modules
+import Monad from "../principles/Monad";
+import Dyad from "../principles/Dyad";
+import Triad from "../principles/Triad";
+import Tetrad from "../principles/Tetrad";
+import Pentad from "../principles/Pentad";
+import Hexad from "../principles/Hexad";
+import Heptad from "../principles/Heptad";
+import Octad from "../principles/Octad";
+import Ennead from "../principles/Ennead";
+import Decad from "../principles/Decad";
 
+// Map principles to their modules
+const principleModules = {
+  Monad,
+  Dyad,
+  Triad,
+  Tetrad,
+  Pentad,
+  Hexad,
+  Heptad,
+  Octad,
+  Ennead,
+  Decad,
+};
 
 function ResultPage() {
   const location = useLocation();
@@ -14,8 +37,10 @@ function ResultPage() {
   const [savedResult, setSavedResult] = useState(null);
   const [isSaving, setIsSaving] = useState(false);
   const [feedback, setFeedback] = useState("");
-  const { dominantPrinciple, secondaryPrinciple } = location.state || {}; // Added secondary principle
-  const primaryResult = results[dominantPrinciple];
+
+  const { dominantPrinciple, secondaryPrinciple } = location.state || {};
+  const primaryResult = principleModules[dominantPrinciple];
+  const secondaryResult = principleModules[secondaryPrinciple];
 
   // Fetch saved results from Firestore
   useEffect(() => {
@@ -32,17 +57,15 @@ function ResultPage() {
         }
       }
     };
-
     fetchSavedResults();
   }, []);
 
   // Save results to Firestore
   const handleSaveResults = async () => {
     if (!auth.currentUser) {
-      navigate("/signin"); // Redirect to sign-in page if not logged in
+      navigate("/signin");
       return;
     }
-
     setIsSaving(true);
     try {
       const userRef = doc(db, "users", auth.currentUser.uid);
@@ -66,10 +89,9 @@ function ResultPage() {
     return <h2>No result available. Please complete the quiz.</h2>;
   }
 
-  // Determine what to display
-  const displayPrimaryResult = savedResult ? results[savedResult] : primaryResult;
-
-  // Fetch the combination result description
+  const displayPrimaryResult = savedResult
+    ? principleModules[savedResult]
+    : primaryResult;
   const combinationDescription =
     principleCombinations[dominantPrinciple]?.[secondaryPrinciple] || "";
 
@@ -77,17 +99,34 @@ function ResultPage() {
     <div className="result-page">
       {/* Primary Principle Section */}
       <div className="result-section">
-        <h1>{displayPrimaryResult.title}</h1>
+        <h1>{displayPrimaryResult.name}</h1>
         <p>{displayPrimaryResult.description}</p>
+        <h3>What It Means for You:</h3>
+        <ul>
+          {displayPrimaryResult.strengths.map((strength, index) => (
+            <li key={index}>{strength}</li>
+          ))}
+        </ul>
+        <h3>Opportunities for Growth:</h3>
+        <ul>
+          {displayPrimaryResult.growth.map((growth, index) => (
+            <li key={index}>{growth}</li>
+          ))}
+        </ul>
+        <h3>Practical Exercises:</h3>
+        <ul>
+          {displayPrimaryResult.exercises.map((exercise, index) => (
+            <li key={index}>{exercise}</li>
+          ))}
+        </ul>
         <h3>Advice from Pythagoras:</h3>
         <p>{displayPrimaryResult.advice}</p>
       </div>
 
       {/* Secondary Principle Section */}
       {secondaryPrinciple && combinationDescription && (
-        <div className="result-section">
-          <h2>Secondary Principle: {secondaryPrinciple}</h2>
-          <h3>Words of Encouragement:</h3>
+        <div className="result-section secondary">
+          <h2>Secondary Principle: {secondaryResult.name}</h2>
           <p>{combinationDescription}</p>
         </div>
       )}
