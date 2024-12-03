@@ -5,7 +5,6 @@ import { doc, setDoc, getDoc } from "firebase/firestore";
 import "../styles/ResultPage.css";
 import principleCombinations from "../data/principleCombinations";
 
-// Import individual principle modules
 import Monad from "../principles/Monad";
 import Dyad from "../principles/Dyad";
 import Triad from "../principles/Triad";
@@ -17,7 +16,6 @@ import Octad from "../principles/Octad";
 import Ennead from "../principles/Ennead";
 import Decad from "../principles/Decad";
 
-// Map principles to their modules
 const principleModules = {
   Monad,
   Dyad,
@@ -42,8 +40,15 @@ function ResultPage() {
   const primaryResult = principleModules[dominantPrinciple];
   const secondaryResult = principleModules[secondaryPrinciple];
 
-  // Fetch saved results from Firestore
   useEffect(() => {
+    if (dominantPrinciple) {
+      // Save results temporarily in local storage
+      localStorage.setItem(
+        "quizResults",
+        JSON.stringify({ dominantPrinciple, secondaryPrinciple })
+      );
+    }
+
     const fetchSavedResults = async () => {
       if (auth.currentUser) {
         try {
@@ -58,9 +63,8 @@ function ResultPage() {
       }
     };
     fetchSavedResults();
-  }, []);
+  }, [dominantPrinciple, secondaryPrinciple]);
 
-  // Save results to Firestore
   const handleSaveResults = async () => {
     if (!auth.currentUser) {
       navigate("/signin");
@@ -84,7 +88,25 @@ function ResultPage() {
     }
   };
 
-  // Redirect if no result is available
+  const handleSignupRedirect = () => {
+    // Save results in local storage before redirecting
+    localStorage.setItem(
+      "quizResults",
+      JSON.stringify({ dominantPrinciple, secondaryPrinciple })
+    );
+    navigate("/signup");
+  };
+
+  useEffect(() => {
+    // Retrieve results from local storage if returning to the results page
+    if (!dominantPrinciple && !savedResult) {
+      const savedResults = JSON.parse(localStorage.getItem("quizResults"));
+      if (savedResults) {
+        navigate("/results", { state: savedResults });
+      }
+    }
+  }, [dominantPrinciple, savedResult, navigate]);
+
   if (!primaryResult && !savedResult) {
     return <h2>No result available. Please complete the quiz.</h2>;
   }
@@ -143,7 +165,7 @@ function ResultPage() {
         ) : savedResult ? (
           <p>Your results are already saved!</p>
         ) : (
-          <button onClick={() => navigate("/signup")}>
+          <button onClick={handleSignupRedirect}>
             Sign up to save your results
           </button>
         )}
