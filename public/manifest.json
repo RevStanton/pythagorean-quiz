@@ -1,20 +1,20 @@
 {
-  "name": "Pythagoras Quiz App",
+  "name": "Pythagorean Quiz",
   "short_name": "Quiz",
-  "start_url": "/pythagorean-quiz/",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#000000",
   "icons": [
     {
       "src": "/pythagorean-quiz/icon-192.png",
-      "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "type": "image/png"
     },
     {
       "src": "/pythagorean-quiz/icon-512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "type": "image/png"
     }
-  ]
+  ],
+  "start_url": "/pythagorean-quiz/",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff"
 }

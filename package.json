@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "homepage": "https://symmetrical-halibut-q64pvvgg45v2r66-5175.app.github.dev/pythagorean-quiz/",
   "dependencies": {
     "@firebase/firestore": "^4.7.5",
     "@testing-library/jest-dom": "^5.16.5",
