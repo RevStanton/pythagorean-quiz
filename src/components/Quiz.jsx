@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import questions from "../data/questions";
 
-
-function Quiz({ onComplete }) {
+function Quiz({ questions, onComplete }) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState([]);
 
@@ -26,17 +24,16 @@ function Quiz({ onComplete }) {
 
   return (
     <div className="quiz-container">
-    <h2>Question {currentQuestion + 1}</h2>
-    <p className="question-text">{text}</p>
-    <div className="button-container">
-      {options.map((option, index) => (
-        <button key={index} onClick={() => handleAnswer(option)}>
-          {option.text}
-        </button>
-      ))}
+      <h2>Question {currentQuestion + 1}</h2>
+      <p className="question-text">{text}</p>
+      <div className="button-container">
+        {options.map((option, index) => (
+          <button key={index} onClick={() => handleAnswer(option)}>
+            {option.text}
+          </button>
+        ))}
+      </div>
     </div>
-  </div>
-
   );
 }
 

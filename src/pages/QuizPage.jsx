@@ -27,31 +27,43 @@ function QuizPage() {
   // Handle quiz completion
   const handleComplete = async (answers) => {
     const scores = {};
-    const questionCounts = {};
-
-    // Calculate scores for each principle
-    answers.forEach((answer) => {
-      // Update primary scores
-      scores[answer.primary] = (scores[answer.primary] || 0) + answer.points;
-      questionCounts[answer.primary] = (questionCounts[answer.primary] || 0) + 1;
-
-      // Update secondary scores with adjusted weight
-      if (answer.secondary) {
-        scores[answer.secondary] =
-          (scores[answer.secondary] || 0) + Math.ceil(answer.points * 0.4);
-      }
+    const maxPossibleScores = {};
+  
+    // Initialize scores and max possible scores for all principles
+    const principles = [
+      "Monad", "Dyad", "Triad", "Tetrad", "Pentad",
+      "Hexad", "Heptad", "Octad", "Ennead", "Decad"
+    ];
+  
+    principles.forEach((principle) => {
+      scores[principle] = 0;
+      maxPossibleScores[principle] = 15; // Each principle appears 3 times as primary, max 5 points each
     });
-
-    // Normalize scores by the number of questions
+  
+    // Calculate user's scores based on their answers
+    answers.forEach((answer, index) => {
+      const question = shuffledQuestions[index];
+      const { primary, opposite } = question;
+      const points = answer.points;
+  
+      // Assign points to primary principle
+      scores[primary] += points;
+  
+      // Assign inverse points to opposite principle
+      const inversePoints = 6 - points; // So that Strongly Agree (5 points) gives 1 point to opposite
+      scores[opposite] += inversePoints;
+    });
+  
+    // Normalize scores to percentages (optional)
     Object.keys(scores).forEach((principle) => {
-      scores[principle] /= questionCounts[principle] || 1;
+      scores[principle] = (scores[principle] / maxPossibleScores[principle]) * 100;
     });
-
-    // Sort principles by score
+  
+    // Sort principles by normalized score
     const sortedPrinciples = Object.keys(scores).sort((a, b) => scores[b] - scores[a]);
     const dominantPrinciple = sortedPrinciples[0];
     const secondaryPrinciple = sortedPrinciples[1];
-
+  
     console.log("Dominant Principle:", dominantPrinciple);
     console.log("Secondary Principle:", secondaryPrinciple);
 
@@ -77,10 +89,7 @@ function QuizPage() {
     <div>
       <h1>Pythagorean Principles Quiz</h1>
       {shuffledQuestions.length > 0 ? (
-        <Quiz
-          questions={shuffledQuestions}
-          onComplete={handleComplete}
-        />
+        <Quiz questions={shuffledQuestions} onComplete={handleComplete} />
       ) : (
         <p>Loading questions... Please wait.</p>
       )}

@@ -143,8 +143,8 @@ function ResultPage() {
         ) : savedResult ? (
           <p>Your results are already saved!</p>
         ) : (
-          <button onClick={() => navigate("/signin")}>
-            Sign in to save your results
+          <button onClick={() => navigate("/signup")}>
+            Sign up to save your results
           </button>
         )}
       </div>
