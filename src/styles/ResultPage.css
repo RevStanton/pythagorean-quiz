@@ -8,6 +8,7 @@
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: left; /* Align content to the left for better readability */
+  margin-top: 20px; /* Add spacing below the navigation */
 }
 
 .result-page h1 {
@@ -93,6 +94,7 @@
 @media (max-width: 768px) {
   .result-page {
     padding: 20px;
+    margin-top: 20px; /* Add spacing below the navigation */
   }
 
   .result-page h1 {
@@ -106,4 +108,5 @@
   .result-page ul li {
     font-size: 16px;
   }
+
 }

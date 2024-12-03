@@ -1,87 +1,87 @@
 .navigation {
-    display: flex;
-    justify-content: center; /* Center the navigation items horizontally */
-    align-items: center; /* Align items vertically */
-    background: linear-gradient(90deg, #6c5ce7, #81ecec); /* Gradient background */
-    padding: 5px 0; /* Add padding for spacing */
-    position: sticky; /* Make it stick to the top */
-    top: 0;
-    left: 0; /* Ensure it starts from the very left */
-    width: 100%; /* Ensure it spans the full width of the viewport */
-    z-index: 1000; /* Ensure it stays above other elements */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-    border-radius: 15px;
-  }
-  
-  .nav-list {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .nav-item {
-    margin: 0 15px; /* Add space between each navigation item */
-  }
-  
-  .nav-item a {
-    text-decoration: none; /* Remove underline */
-    font-size: 16px; /* Adjust font size */
-    color: white; /* Set text color */
-    transition: color 0.3s ease, background-color 0.3s ease; /* Add hover effects */
-    padding: 5px 10px; /* Add padding inside links */
-    border-radius: 5px; /* Slightly round the corners */
-  }
-  
-  .nav-item a:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Highlight the background on hover */
-    color: #ffeaa7; /* Change text color on hover */
-  }
-  
-  .active-link {
-    font-weight: bold; /* Highlight the active link */
-    color: #ffeaa7; /* Set a distinctive color */
-    border-bottom: 2px solid #ffeaa7; /* Add a bottom border */
-  }
-  
-  .navigation ul {
-    display: flex;
-    flex-direction: row; /* Items are aligned horizontally */
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    gap: 15px; /* Adds spacing between menu items */
-    justify-content: center; /* Centers the entire menu */
-  }
+  display: flex;
+  justify-content: center; /* Center the navigation items horizontally */
+  align-items: center; /* Align items vertically */
+  background: linear-gradient(90deg, #6c5ce7, #81ecec); /* Gradient background */
+  padding: 5px 0; /* Add padding for spacing */
+  position: sticky; /* Make it stick to the top */
+  top: 0;
+  left: 0; /* Ensure it starts from the very left */
+  width: 100%; /* Ensure it spans the full width of the viewport */
+  z-index: 1000; /* Ensure it stays above other elements */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  border-radius: 15px;
+}
 
-  .navigation li {
-    margin: 0;
-    display: flex;
-    align-items: center; /* Ensures vertical alignment */
-    justify-content: center; /* Ensures horizontal alignment */
-  }
+.nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
-  .navigation a {
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 5px;
-    transition: background 0.3s ease;
-  }
-  
-  .navigation a:hover,
+.nav-item {
+  margin: 0 15px; /* Add space between each navigation item */
+}
+
+.nav-item a {
+  text-decoration: none; /* Remove underline */
+  font-size: 16px; /* Adjust font size */
+  color: white; /* Set text color */
+  transition: color 0.3s ease, background-color 0.3s ease; /* Add hover effects */
+  padding: 5px 10px; /* Add padding inside links */
+  border-radius: 5px; /* Slightly round the corners */
+}
+
+.nav-item a:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Highlight the background on hover */
+  color: #ffeaa7; /* Change text color on hover */
+}
+
+.active-link {
+  font-weight: bold; /* Highlight the active link */
+  color: #ffeaa7; /* Set a distinctive color */
+  border-bottom: 2px solid #ffeaa7; /* Add a bottom border */
+}
+
+.navigation ul {
+  display: flex;
+  flex-direction: row; /* Items are aligned horizontally */
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  gap: 15px; /* Adds spacing between menu items */
+  justify-content: center; /* Centers the entire menu */
+}
+
+.navigation li {
+  margin: 0;
+  display: flex;
+  align-items: center; /* Ensures vertical alignment */
+  justify-content: center; /* Ensures horizontal alignment */
+}
+
+.navigation a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.navigation a:hover,
 .navigation a.active-link {
-  background: rgba(255, 255, 255, 0.2); /* Highlights active/hovered link */
+background: rgba(255, 255, 255, 0.2); /* Highlights active/hovered link */
 }
 
 @media (max-width: 768px) {
-  .navigation ul {
-    align-items: center; /* Centers items */
-  }
+.navigation ul {
+  align-items: center; /* Centers items */
+}
 
-  .navigation a {
-    font-size: 14px; /* Adjust font size for smaller screens */
-  }
+.navigation a {
+  font-size: 14px; /* Adjust font size for smaller screens */
+}
 }
